@@ -1,2 +1,20 @@
-<h1>Show page</h1>
-<%= @cocktail.name %>
+
+<h1><%= @cocktail.name %> 🍹</h1>
+
+
+<div class="card card-body col-lg-6">
+  <h3>Ingredients</h3>
+  <ol>
+    <% @cocktail.doses.each do |dose|  %>
+      <li><%= dose.description %></li>
+    <% end %>
+  </ol>
+</div>
+
+<div class="card card-body col-lg-6 mt-5">
+  <%= simple_form_for [@cocktail, @dose ] do |f| %>
+   <%= f.input :description %>
+   <%= f.association :ingredient, as: :select %>
+   <%= f.button :submit, class: "btn btn-primary" %>
+ <% end %>
+</div>
