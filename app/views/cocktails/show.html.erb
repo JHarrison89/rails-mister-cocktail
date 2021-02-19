@@ -6,10 +6,14 @@
   <h3>Ingredients</h3>
   <ol>
     <% @cocktail.doses.each do |dose|  %>
-      <li><%= dose.description %></li>
+      <li><%= dose.description %> | <%= link_to "delete", dose_path(dose), method: :delete %></li>
     <% end %>
   </ol>
 </div>
+
+
+
+
 
 <div class="card card-body col-lg-6 mt-5">
   <%= simple_form_for [@cocktail, @dose ] do |f| %>
@@ -18,3 +22,6 @@
    <%= f.button :submit, class: "btn btn-primary" %>
  <% end %>
 </div>
+
+
+
